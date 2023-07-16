@@ -77,6 +77,13 @@ using() {
 				return 0 # TRUE
 			fi
 		done
+		if ! isdef "$(include_tag "$1")" && ! isdef "$(include_tag "$1.sh")"; then
+			if [ -z "$(command -v warning)" ]; then
+				echo -e "primalrunes/using.sh: \e[33mWARNING\e[39m   module \`$1' \e[31mNOT FOUND\e[39m"
+			else
+				warning "primalrunes/using.sh" "module \`$1' \e[31mNOT FOUND\e[39m"
+			fi
+		fi
 		return 1 # FALSE
 	fi
 }
