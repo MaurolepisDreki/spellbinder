@@ -3,14 +3,15 @@
 #      "A build-system to build the build-system that builds the build-system
 #      which is a build-system that builds..."
 . primalrunes/using.sh
-using config
+using module/config
+
+using messages
 using assert_dir
 using find_program
 
 # SECTION: MAIN
-echo -e "Initializing \e[1m$PROJECT_NAME\e[22m $PROJECT_VERSION"
+message "Initializing \e[1m$PROJECT_NAME\e[22m $PROJECT_VERSION"
 add_indent "   "
 
-assert_dir build
-find_program CC gcc
+find_program PERL perl
 

@@ -1,0 +1,3 @@
+m4_changequote(`[',`]')m4_dnl
+m4_define([m4_true],[m4_eval(0 == 0)])m4_dnl
+m4_define([m4_false],[m4_eval(! m4_true)])m4_dnl
