@@ -7,11 +7,14 @@ using module/config
 
 using messages
 using assert_dir
-using find_program
 
 # SECTION: MAIN
 message "Initializing \e[1m$PROJECT_NAME\e[22m $PROJECT_VERSION"
 add_indent "   "
 
-find_program PERL perl
+using module/perl
+push_src_dir "primalrunes"
+push_bin_dir "build/primalrunes"
+#perl_run testbench/INC.pl
+
 

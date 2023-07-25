@@ -8,8 +8,8 @@ if [ -z "$M4" ]; then
 	find_program M4 m4
 fi
 
-# m4_target OUT IN [...]
-m4_target() {
+# m4_make OUT IN [...]
+m4_make() {
 	assert_dir "$BINARY_DIR"
 	status_message "Creating $1... "
 	declare -a tmp=()
@@ -17,6 +17,11 @@ m4_target() {
 		tmp=( "$target" "${tmp[@]}" )
 	done
 	$M4 -P -I"$SOURCE_DIR" m4rc ${tmp[@]:0:$((${#tmp[@]} - 1 ))} >"$BINARY_DIR/$1"
-	status_report "UNKNOWN"
+
+	if [ -f "$BINARY_DIR/$1" ]; then
+		status_report "\e[32mDONE\e[39m"
+	else
+		status_report "\e[31mFAILED\e[39m"
+	fi
 }
 

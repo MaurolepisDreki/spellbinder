@@ -51,7 +51,7 @@ using_dir() {
 	USINGDIRS=( "$@" "${USINGDIRS[@]}" )
 }
 
-using_dir `pwd` "$(pwd)/primalrunes"
+using_dir "$(pwd)/primalrunes" `pwd`
 
 if [ -n "$(command -v using)" ]; then
 	echo "primalrunes/using.sh: ERROR: command using is already defined" >&2
