@@ -1,6 +1,7 @@
 # Primal Rune's perl interpreter interface
 using messages
 using module/dirs
+using colors
 
 if [ -z "$PERL" ]; then
 	using find_program
@@ -37,3 +38,16 @@ perl_run() {
 	return $?
 }
 
+perl_test() {
+	declare name="$1"
+	if [ "$#" -gt '1' ]; then
+		shift
+	fi
+
+	status_message "Testing $name... "
+	if perl_run "$1"; then
+		status_report "${COLOR_GREEN}OK${COLOR_DEFAULT}"
+	else
+		exit 1
+	fi
+}
