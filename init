@@ -16,5 +16,6 @@ using module/perl
 push_src_dir "primalrunes"
 push_bin_dir "build/primalrunes"
 #perl_run testbench/INC.pl
+perl_test "toolbox.pm" "testbench/toolbox.pl"
 perl_test "ELF64.pm" "testbench/ELF64.pl"
 
