@@ -102,4 +102,14 @@ sub assert_equal {
 	$assertcount = $assertcount + 1;
 }
 
+sub assert_defined {
+	push @assertfailure, callinfo( 1 ) if not defined $_[0];
+	$assertcount++;
+}
+
+sub assert_match {
+	push @assertfailure, callinfo( 1 ) if  $_[0] !~ $_[1];
+	$assertcount++;
+}
+
 1;
